@@ -38,6 +38,11 @@ $routes->get('/', 'Home::index');
 $routes->match(['get', 'post'], '/login', 'AuthController::index');
 $routes->match(['get', 'post'], '/register', 'AuthController::register');
 
+// Feed Page
+$routes->match(['get', 'post'], '/feed', 'Feed/FeedPage::index');
+
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
