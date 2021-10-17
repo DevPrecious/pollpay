@@ -35,11 +35,12 @@ $routes->get('/', 'Home::index');
 
 // Authentication
 
-$routes->match(['get', 'post'], '/login', 'AuthController::index');
-$routes->match(['get', 'post'], '/register', 'AuthController::register');
+$routes->match(['get', 'post'], '/login', 'AuthController::index', ['filter' => 'noauth']);
+$routes->match(['get', 'post'], '/register', 'AuthController::register', ['filter' => 'noauth']);
 
 // Feed Page
-$routes->match(['get', 'post'], '/feed', 'Feed/FeedPage::index');
+$routes->match(['get', 'post'], '/feed', 'Feed/FeedPage::index', ['filter' => 'auth']);
+$routes->match(['get', 'post'], '/create', 'Feed/CreatePage::index', ['filter' => 'auth']);
 
 
 

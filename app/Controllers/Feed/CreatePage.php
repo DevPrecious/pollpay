@@ -5,7 +5,7 @@ namespace App\Controllers\Feed;
 use App\Controllers\BaseController;
 use App\Models\User;
 
-class FeedPage extends BaseController
+class CreatePage extends BaseController
 {
     public $user_id, $user;
 
@@ -18,11 +18,10 @@ class FeedPage extends BaseController
 
     public function index()
     {
-        $title = $this->user[0]['fullname'] . " " . "PollPay";
+        helper(['form']);
         $data = [
-            'title' => $title,
-            'user' => $this->user
+            'title' => 'Create a Poll'
         ];
-        return view('feed/feed', $data);
+        return view('feed/create', $data);
     }
 }
