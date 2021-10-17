@@ -4,10 +4,12 @@ namespace App\Controllers\Feed;
 
 use App\Controllers\BaseController;
 use App\Models\User;
+use CodeIgniter\API\ResponseTrait;
 
 class CreatePage extends BaseController
 {
     public $user_id, $user;
+    use ResponseTrait;
 
     public function __construct()
     {

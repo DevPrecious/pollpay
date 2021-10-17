@@ -42,6 +42,9 @@ $routes->match(['get', 'post'], '/register', 'AuthController::register', ['filte
 $routes->match(['get', 'post'], '/feed', 'Feed/FeedPage::index', ['filter' => 'auth']);
 $routes->match(['get', 'post'], '/create', 'Feed/CreatePage::index', ['filter' => 'auth']);
 
+// api route
+// $routes->resource('pollapi', ['controller' => 'Api\PollApi']);
+$routes->post('/store', 'Api/PollApi::create', ['filter' => 'auth']);
 
 
 /*

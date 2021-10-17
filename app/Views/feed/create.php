@@ -9,7 +9,7 @@
             <!-- <span class="pt-2 font-light text-lg">PollPay
                 <a href="/register" class="text-blue-700 font-semibold"><u>Register</u></a>
             </span> -->
-            <form class="">
+            <form id="add_poll" class="">
                 <?= $this->include('layouts/messages') ?>
                 <!-- <?= csrf_field() ?> -->
                 <div class="pt-6">
@@ -17,15 +17,18 @@
                 </div>
                 <div class="pt-6" id="dynamic_field">
                     <div class="flex flex-col">
-                        <input type="text" name="name[]" class="rounded-lg p-4 ring ring-gray-100 ring-offset-0 w-full h-8 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Option" />
+                        <input type="text" name="option[]" required class="rounded-lg p-4 ring ring-gray-100 ring-offset-0 w-full h-8 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Option" />
                     </div>
                     <div class="p-2">
                         <button class="w-full rounded-lg text-white shadow-md bg-blue-200" id="add">+</button>
                     </div>
                 </div>
                 <div class="pt-6">
+                    <input type="date" name="datetostop" class="rounded-lg p-4 ring ring-gray-100 ring-offset-0 w-full h-8 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Time to stop" />
+                </div>
+                <div class="pt-6">
                     <div class="flex justify-center md:p-1 p-2 max-w-lg mx-auto bg-blue-500 rounded-xl shadow-md">
-                        <button type="submit" class="flex justify-evenly">
+                        <button type="submit" id="submit" class="flex justify-evenly">
                             <span class="text-white">Create</span>
                             <span class="text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
