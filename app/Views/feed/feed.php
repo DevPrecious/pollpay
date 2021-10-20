@@ -13,28 +13,39 @@
         </svg>
     </div>
 </div>
-
-<div class="md:px-8 md:py-2 px-4 py-4">
-    <div class="rounded-lg p-8 bg-blue-400 shadow-md max-w-lg md:mx-auto">
-        <span class="font-semibold text-xl text-white flex justify-center">
-            Are you waiting for the Stranger Things Season 2?
-        </span>
-        <div class="pt-4 flex flex-col">
-            <div class="rounded-lg text-white p-2 bg-blue-300 shadow md">
-                Can't wait to watch the show 😄
+<?php foreach ($polls as $poll) : ?>
+    <div class="md:px-8 md:py-2 px-4 py-4">
+        <div class="rounded-lg p-8 bg-blue-400 shadow-md max-w-lg md:mx-auto">
+            <span class="font-semibold text-xl text-white flex justify-center">
+                <?= esc($poll['title']) ?>
+            </span>
+            <div class="pt-4 flex flex-col">
+                <?php foreach ($poll['options'] as $opt) : ?>
+                    <div class="pt-4">
+                        <div class="rounded-lg text-white p-2 bg-blue-300 shadow md">
+                            <?= esc($opt['option']) ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+                <!-- <div class="pt-2">
+                    <div class="rounded-lg text-white p-2 bg-blue-300 shadow md">
+                        Not really into it 😞
+                    </div>
+                </div> -->
             </div>
-            <div class="pt-2">
-                <div class="rounded-lg text-white p-2 bg-blue-300 shadow md">
-                    Not really into it 😞
-                </div>
+            <div class="pt-4 flex flex-row justify-between">
+                <span class="text-white">
+                    Ends
+                    <?php
+                    $time_to = $time::parse(esc($poll['end_at']));
+                    ?>
+                    <?= esc($time_to->humanize()) ?>
+                </span>
+                <span class="text-white">10k votes</span>
             </div>
-        </div>
-        <div class="pt-4 flex flex-row justify-between">
-            <span class="text-white">Ends Jun 4, 11:57 PM</span>
-            <span class="text-white">10k votes</span>
         </div>
     </div>
-</div>
+<?php endforeach; ?>
 
 
 

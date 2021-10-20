@@ -61,6 +61,7 @@ class PollApi extends ResourceController
                 $pData = [
                     'title' => $title,
                     'end_at' => $stoptime,
+                    'user_id' => session()->get('user_id')
                 ];
                 $builder->insert($pData);
                 // print_r($db->insertID());

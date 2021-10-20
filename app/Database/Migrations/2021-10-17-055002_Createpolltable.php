@@ -25,6 +25,10 @@ class Createpolltable extends Migration
                 'constraint' => '500'
 
             ],
+            'user_id' =>
+            [
+                'type'   => 'INT',
+            ],
             'created_at' =>
             [
                 'type' => 'varchar',
@@ -41,6 +45,7 @@ class Createpolltable extends Migration
             ],
         ]);
         $this->forge->addKey('poll_id', true);
+        $this->forge->addForeignKey('user_id', 'users', 'user_id', 'CASCADE');
         $this->forge->createTable('polls');
     }
 
