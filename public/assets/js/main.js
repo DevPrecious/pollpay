@@ -57,4 +57,42 @@ $(document).ready(function () {
       },
     });
   });
+
+
+   $(document).on("click", ".click-on", function (e) {
+      e.preventDefault();
+      var element = $(this);
+      var option_id = element.attr("id");
+      var poll_id = $('#poll_id').val();
+      var staked = $('#staked').val();
+      // alert(staked);
+
+      $.ajax({
+                type: "POST",
+                url: '/vote',
+                dataType: 'JSON',
+                data: {option_id: option_id, poll_id: poll_id, staked: staked},
+                success: function(data){
+                    console.log('voted');
+                  Toastify({
+                  text: "Voted",
+                  className: "info",
+                  style: {
+                    background: "linear-gradient(to right, #00b09b, #96c93d)",
+                  },
+                }).showToast();
+                },
+                error: function(err){
+                  // console.log(err)
+                  Toastify({
+                  text: err.responseJSON.messages.staked,
+                  className: "info",
+                  style: {
+                    background: "red",
+                  },
+                }).showToast();
+                }
+            });
+
+   });
 });

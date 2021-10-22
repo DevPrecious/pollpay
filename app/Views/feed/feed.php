@@ -14,20 +14,21 @@
     </div>
 </div>
 <?php foreach ($polls as $poll) : ?>
-    <div class="md:px-8 md:py-2 px-4 py-4">
+    <div class="md:px-8 md:py-2 px-4 py-4" id="vote_sec">
         <div class="rounded-lg p-8 bg-blue-400 shadow-md max-w-lg md:mx-auto">
             <span class="font-semibold text-xl text-white flex justify-center">
                 <?= esc($poll['title']) ?>
             </span>
+            <input type="hidden" name="poll_id" id="poll_id" value="<?= esc($poll['poll_id']) ?>">
             <div class="pt-4">
-                <input type="number" name="stake" id="stake" class="rounded-lg p-4 ring ring-gray-100 ring-offset-0 w-full h-8 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Stake">
+                <input type="number" name="staked" id="staked" class="rounded-lg p-4 ring ring-gray-100 ring-offset-0 w-full h-8 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Stake">
             </div>
             <div class="pt-2 flex flex-col">
                 <?php foreach ($poll['options'] as $opt) : ?>
                     <div class="pt-4">
-                        <div class="rounded-lg text-white p-2 bg-blue-300 shadow md">
+                        <button id="<?= esc($opt['option_id']) ?>" class="click-on w-full rounded-lg text-white p-2 bg-blue-300 shadow md">
                             <?= esc($opt['option']) ?>
-                        </div>
+                        </button>
                     </div>
                 <?php endforeach; ?>
                 <!-- <div class="pt-2">

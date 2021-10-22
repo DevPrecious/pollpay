@@ -3,6 +3,7 @@
 namespace Config;
 
 use App\Validation\CheckBalance;
+use App\Validation\CheckBalanceVote;
 use App\Validation\UserRules;
 use CodeIgniter\Validation\CreditCardRules;
 use CodeIgniter\Validation\FileRules;
@@ -27,7 +28,8 @@ class Validation
         FileRules::class,
         CreditCardRules::class,
         UserRules::class,
-        CheckBalance::class
+        CheckBalance::class,
+        CheckBalanceVote::class,
     ];
 
     /**
