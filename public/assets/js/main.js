@@ -64,7 +64,7 @@ $(document).ready(function () {
       var element = $(this);
       var option_id = element.attr("id");
       var poll_id = $('#poll_id').val();
-      var staked = $('#staked').val();
+      var staked = parseInt($('#staked').val());
       // alert(staked);
 
       $.ajax({
@@ -74,6 +74,7 @@ $(document).ready(function () {
                 data: {option_id: option_id, poll_id: poll_id, staked: staked},
                 success: function(data){
                     console.log('voted');
+                    $('#staked').val("");
                   Toastify({
                   text: "Voted",
                   className: "info",
@@ -84,13 +85,23 @@ $(document).ready(function () {
                 },
                 error: function(err){
                   // console.log(err)
+                  if(err.responseJSON.messages.error){
                   Toastify({
-                  text: err.responseJSON.messages.staked,
+                  text: err.responseJSON.messages.error,
                   className: "info",
                   style: {
                     background: "red",
                   },
                 }).showToast();
+              }else{
+                Toastify({
+                  text: err.responseJSON.messages.stacked,
+                  className: "info",
+                  style: {
+                    background: "red",
+                  },
+                }).showToast();
+              }
                 }
             });
 

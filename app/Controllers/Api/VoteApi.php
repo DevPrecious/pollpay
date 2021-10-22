@@ -47,17 +47,22 @@ class VoteApi extends ResourceController
         if ($this->request->getMethod() == 'post') {
             $rules = [
                 // 'title' => 'required',
-                'staked' => 'required|checkBalanceVote[staked]'
+                'staked' => 'required'
             ];
 
-            $errors = [
-                'staked' => [
-                    'checkBalanceVote' => 'Insufficient balance'
-                ]
-            ];
+            // $errors = [
+            //     'staked' => [
+            //         'checkBalanceVote' => 'Insufficient balance'
+            //     ]
+            // ];
+            $model_w = new Wallet();
+            $getw = $model_w->where('user_id', session()->get('user_id'))->first();
+            if ($getw['amount'] <= $this->request->getVar('staked')) {
+                $msg = "Insufficient Balance";
+                return $this->fail($msg);
+            }
 
-
-            if (!$this->validate($rules, $errors)) {
+            if (!$this->validate($rules)) {
                 return $this->fail($this->validator->getErrors());
             } else {
                 $db = db_connect('default');
