@@ -45,7 +45,7 @@
                     ?>
                     <?= esc($time_to->humanize()) ?>
                 </span>
-                <span class="text-white">10k votes</span>
+                <span class="text-white"><?= esc($poll['votes']) ?> votes</span>
             </div>
         </div>
     </div>
