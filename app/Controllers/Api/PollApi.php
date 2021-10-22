@@ -4,6 +4,7 @@ namespace App\Controllers\Api;
 
 use App\Models\Option;
 use App\Models\Poll;
+use App\Models\Wallet;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\RESTful\ResourceController;
 
@@ -49,20 +50,38 @@ class PollApi extends ResourceController
         if ($this->request->getMethod() == 'post' && !empty($this->request->getVar('option'))) {
             $rules = [
                 'title' => 'required',
+                'amount' => 'required|checkBalance[amount]'
             ];
 
-            if (!$this->validate($rules)) {
+            $errors = [
+                'amount' => [
+                    'checkBalance' => 'Insufficient balance'
+                ]
+            ];
+
+
+            if (!$this->validate($rules, $errors)) {
                 return $this->fail($this->validator->getErrors());
             } else {
                 $db = db_connect('default');
                 $builder = $db->table('polls');
                 $title = $this->request->getVar('title');
                 $stoptime = $this->request->getVar('datetostop');
+                $amount = $this->request->getVar('amount');
+                // get wallet
+                $wallet = new Wallet();
+                $get_balance = $wallet->where('user_id', session()->get('user_id'))->first();
+                $new_balance = $get_balance['amount'] - $amount;
                 $pData = [
                     'title' => $title,
                     'end_at' => $stoptime,
-                    'user_id' => session()->get('user_id')
+                    'user_id' => session()->get('user_id'),
+                    'stake' => $amount
                 ];
+                $newWallet = [
+                    'amount' => $new_balance
+                ];
+                $wallet->update($get_balance['wallet_id'], $newWallet);
                 $builder->insert($pData);
                 // print_r($db->insertID());
                 $poll_id = $db->insertID();

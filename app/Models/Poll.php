@@ -14,7 +14,7 @@ class Poll extends Model
     protected $returnType           = 'array';
     protected $useSoftDeletes       = false;
     protected $protectFields        = true;
-    protected $allowedFields        = ['title', 'end_at', 'created_at', 'updated_at'];
+    protected $allowedFields        = ['title', 'end_at', 'stake', 'created_at', 'updated_at'];
 
     // Dates
     protected $useTimestamps        = true;

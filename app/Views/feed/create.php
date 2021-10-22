@@ -24,7 +24,10 @@
                     </div>
                 </div>
                 <div class="pt-6">
-                    <input type="date" name="datetostop" class="rounded-lg p-4 ring ring-gray-100 ring-offset-0 w-full h-8 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Time to stop" />
+                    <input type="number" name="amount" id="amount" class="rounded-lg p-4 ring ring-gray-100 ring-offset-0 w-full h-8 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Stake">
+                </div>
+                <div class="pt-6">
+                    <input type="datetime-local" required name="datetostop" class="rounded-lg p-4 ring ring-gray-100 ring-offset-0 w-full h-8 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Time to stop" />
                 </div>
                 <div class="pt-6">
                     <div class="flex justify-center md:p-1 p-2 max-w-lg mx-auto bg-blue-500 rounded-xl shadow-md">

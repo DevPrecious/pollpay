@@ -27,7 +27,7 @@ class Fund extends BaseController
                 $curl = curl_init();
 
                 $email = $user['email'];
-                $amount = $this->request->getVar('amount');  //the amount in kobo. This value is actually NGN 300
+                $amount = $this->request->getVar('amount') * 100;  //the amount in kobo. This value is actually NGN 300
 
                 // Store sessions
                 $ses_store = [

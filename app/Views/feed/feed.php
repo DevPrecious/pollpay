@@ -19,7 +19,10 @@
             <span class="font-semibold text-xl text-white flex justify-center">
                 <?= esc($poll['title']) ?>
             </span>
-            <div class="pt-4 flex flex-col">
+            <div class="pt-4">
+                <input type="number" name="stake" id="stake" class="rounded-lg p-4 ring ring-gray-100 ring-offset-0 w-full h-8 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Stake">
+            </div>
+            <div class="pt-2 flex flex-col">
                 <?php foreach ($poll['options'] as $opt) : ?>
                     <div class="pt-4">
                         <div class="rounded-lg text-white p-2 bg-blue-300 shadow md">

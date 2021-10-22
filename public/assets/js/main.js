@@ -39,9 +39,16 @@ $(document).ready(function () {
         }).showToast();
       },
       error: function (data) {
-        console.log(data);
+        // console.log(data);
         Toastify({
-          text: "Title is required",
+          text: data.responseJSON.messages.title,
+          className: "info",
+          style: {
+            background: "red",
+          },
+        }).showToast();
+        Toastify({
+          text: data.responseJSON.messages.amount,
           className: "info",
           style: {
             background: "red",

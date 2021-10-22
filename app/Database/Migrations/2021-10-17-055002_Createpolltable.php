@@ -19,6 +19,11 @@ class Createpolltable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '225'
             ],
+            'stake' =>
+            [
+                'type' => 'INT',
+                'constraint' => '11'
+            ],
             'end_at' =>
             [
                 'type' => 'VARCHAR',
