@@ -46,7 +46,10 @@ $routes->match(['get', 'post'], '/create', 'Feed/CreatePage::index', ['filter' =
 // $routes->resource('pollapi', ['controller' => 'Api\PollApi']);
 $routes->post('/store', 'Api/PollApi::create', ['filter' => 'auth']);
 
-
+//Payments
+$routes->match(['get', 'post'], '/fund', 'Payments/Fund::index', ['filter' => 'auth']);
+// $routes->match(['get', 'post'], '/callback?(:any)', 'Payments/Fund::callback/$1', ['filter' => 'auth']);
+$routes->match(['get', 'post'], '/callback', 'Payments/Fund::callback', ['filter' => 'auth']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
