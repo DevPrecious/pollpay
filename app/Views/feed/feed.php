@@ -5,7 +5,7 @@
 <div class="md:py-12 md:px-12 py-8 px-8 flex justify-between">
     <div class="flex flex-row">
         <img width="60" height="60" class="rounded-2xl" src="https://spng.pngfind.com/pngs/s/5-52097_avatar-png-pic-vector-avatar-icon-png-transparent.png" alt="">
-        <span class="py-4 pl-4 font-semibold"><?= esc($user[0]['fullname']) ?></span>
+        <span class="py-4 pl-4 font-semibold"><?= esc($user['fullname']) ?></span>
     </div>
     <div class="py-6">
         <svg class="font-semibold" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">

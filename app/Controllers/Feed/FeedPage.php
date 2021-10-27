@@ -17,13 +17,14 @@ class FeedPage extends BaseController
     {
         $this->user_id = session()->get('user_id');
         $model = new User();
-        $this->user = $model->find($this->user);
+        $this->user = $model->find($this->user_id);
+        // dd($this->user);
     }
 
     public function index()
     {
         $time = new Time();
-        $title = $this->user[0]['fullname'] . " " . "PollPay";
+        $title = $this->user['fullname'] . " " . "PollPay";
         $pollModel = new Poll();
         $pollOptionModel = new Option();
         $voteModel = new Votes();
